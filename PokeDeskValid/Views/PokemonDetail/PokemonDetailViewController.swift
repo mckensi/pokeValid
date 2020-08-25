@@ -2,8 +2,8 @@
 //  PokemonDetailViewController.swift
 //  PokeDeskApp
 //
-//  Created by Daniel Steven MURCIA ALMANZA on 10/24/19.
-//  Copyright © 2019 Daniel Steven Murcia Almanza. All rights reserved.
+//  Created by Daniel Steven Murcia Almanza on 25/08/20.
+//  Copyright © 2020 selvamatic. All rights reserved.
 //
 
 import Foundation
@@ -18,7 +18,7 @@ enum SectionDetail {
 
 class PokemonDetailViewController: UIViewController {
     
-    //MARK: Outlets
+    //MARK: IBOutlets
     
     @IBOutlet weak var viewHeaderContainer: UIView!
     @IBOutlet var lblTitleCollapsed: UILabel!
@@ -39,6 +39,9 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var containerViewButtonsEvolutions: UIView!
     @IBOutlet weak var containerViewButtonMoves: UIView!
     
+    @IBOutlet weak var ctrTitleTop: NSLayoutConstraint!
+    @IBOutlet weak var imageMain: UIImageView!
+    
     private var typeSectionSelected : SectionDetail = .STATS {
         didSet{
             DispatchQueue.main.async {
@@ -57,10 +60,15 @@ class PokemonDetailViewController: UIViewController {
     private var titleForLabels: String?
     
     private var idPokemon : Int?
+    var pokemon : PokemonRes? {
+        didSet{
+       
+        }
+    }
     
     private var stats : [String:Int]? {
         didSet {
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     
@@ -74,32 +82,20 @@ class PokemonDetailViewController: UIViewController {
     
     private var abilities : [Ability]? {
         didSet {
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     
     private var moves : [Move]? {
         didSet {
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     
-    
-    @IBOutlet weak var ctrTitleTop: NSLayoutConstraint!
-    @IBOutlet weak var imageMain: UIImageView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         setUpUI()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -107,6 +103,9 @@ class PokemonDetailViewController: UIViewController {
     }
     
     private func setUpUI(){
+        
+       
+        setUpPokemonDataUI()
         setUpTable()
         initListener()
         
@@ -116,7 +115,6 @@ class PokemonDetailViewController: UIViewController {
             imageMain.kf.setImage(with: imageUrl)
         }
         
-        viewModel.getPokemon(id: self.idPokemon ?? 1)
         viewModel.getPokemonEvolutions(id: self.idPokemon ?? 1)
         
         lblTitleCollapsed.text = titleForLabels?.capitalizingFirstLetter()
@@ -126,10 +124,40 @@ class PokemonDetailViewController: UIViewController {
         containerViewButtonStats.layer.cornerRadius = 14
         containerViewButtonsEvolutions.layer.cornerRadius = 14
         containerViewButtonMoves.layer.cornerRadius = 14
-        
-
-      
-        
+    }
+    
+    private func setUpPokemonDataUI(){
+        guard let pokemon = pokemon else {return}
+               self.stats = [String: Int]()
+               guard let stats = pokemon.stats else {return}
+               for stats in stats{
+                   self.stats?.updateValue(stats.baseStat ?? 0, forKey: stats.stat?.name ?? "")
+               }
+               
+               self.abilities = pokemon.abilities
+               self.moves = pokemon.moves
+               if let numberOfTypes = pokemon.types?.count, numberOfTypes != 0{
+                   self.containerViewTypePokemon.isHidden = false
+                   
+                   if numberOfTypes == 1{
+                       self.imgSecondType.isHidden = true
+                       if let type = pokemon.types?[0].type?.name {
+                           self.setHeaderGradient(type: type)
+                           self.imgFirstType.image = getImageForType(type: type)
+                       }
+                   }else{
+                       if let type = pokemon.types?[0].type?.name {
+                           self.setHeaderGradient(type: type)
+                           self.imgFirstType.image = getImageForType(type: type)
+                       }
+                       if let secondType = pokemon.types?[1].type?.name {
+                           self.imgSecondType.image = getImageForType(type: secondType)
+                       }
+                       self.imgSecondType.isHidden = false
+                   }
+               }else{
+                   self.containerViewTypePokemon.isHidden = true
+               }
     }
     
     private func setUpTable(){
@@ -193,47 +221,6 @@ class PokemonDetailViewController: UIViewController {
     }
     
     private func initListener(){
-        viewModel.pokemonRes = { [weak self]response in
-            print(response.stats?[0].stat?.name ?? "")
-            print(response.stats?[0].baseStat ?? "")
-            
-            self?.stats = [String: Int]()
-            guard let stats = response.stats else {return}
-            for stats in stats{
-                self?.stats?.updateValue(stats.baseStat ?? 0, forKey: stats.stat?.name ?? "")
-            }
-            
-            self?.abilities = response.abilities
-            self?.moves = response.moves
-            if let numberOfTypes = response.types?.count, numberOfTypes != 0{
-                self?.containerViewTypePokemon.isHidden = false
-                
-                if numberOfTypes == 1{
-                
-                    self?.imgSecondType.isHidden = true
-                    if let type = response.types?[0].type?.name {
-                        
-                        self?.setHeaderGradient(type: type)
-                        self?.imgFirstType.image = getImageForType(type: type)
-                    }
-                 
-                }else{
-                    if let type = response.types?[0].type?.name {
-                        self?.setHeaderGradient(type: type)
-                        self?.imgFirstType.image = getImageForType(type: type)
-                    }
-                    if let secondType = response.types?[1].type?.name {
-                        self?.imgSecondType.image = getImageForType(type: secondType)
-                    }
-                    self?.imgSecondType.isHidden = false
-                    
-                }
-                
-            }else{
-                self?.containerViewTypePokemon.isHidden = true
-            }
-            
-        }
         
         viewModel.pokemonEvolutionsRes = { [weak self] response in
             self?.evolutions.append(response.chain?.species ?? Species())
@@ -244,7 +231,6 @@ class PokemonDetailViewController: UIViewController {
             if response.chain?.evolvesTo != nil && response.chain?.evolvesTo?.count != 0 && response.chain?.evolvesTo?[0].evolvesTo?.count != 0 {
                 self?.evolutions.append(response.chain?.evolvesTo?[0].evolvesTo?[0].species ?? Species())
             }
-            
         }
     }
     
@@ -322,10 +308,6 @@ extension PokemonDetailViewController: UITableViewDataSource {
         }
     }
     
-    func getEvolutionUrl(){
-        
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch typeSectionSelected {
@@ -335,14 +317,18 @@ extension PokemonDetailViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell") as? PokemonStatsTableViewCell
                 cell?.stats = stats
                 cell?.colors = self.colors
+                cell?.selectionStyle = .none
                 return cell ?? UITableViewCell()
             case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "weaknessesCell") as! PokemonWeaknessesTableViewCell
-                return cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "weaknessesCell") as? PokemonWeaknessesTableViewCell
+                cell?.selectionStyle = .none
+                return cell ?? UITableViewCell()
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "abilityCell") as! PokemonAbilitiesTableViewCell
-                cell.lblTitle.text = abilities?[indexPath.row].ability?.name?.capitalizingFirstLetter() ?? ""
-                return cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "abilityCell") as? PokemonAbilitiesTableViewCell
+                cell?.lblTitle.text = abilities?[indexPath.row].ability?.name?.capitalizingFirstLetter() ?? ""
+                cell?.lblTitle.textColor = UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor)
+                cell?.selectionStyle = .none
+                return cell ?? UITableViewCell()
             default:
                 return UITableViewCell()
             }
@@ -370,7 +356,6 @@ extension PokemonDetailViewController: UITableViewDataSource {
                 id2 = String(idPokemon ?? "")
             }
             
-            
             if let fisrtEvolutionUrl = URL(string: "\(PokemonImageApi.baseImageUrl)\(idString).png") {
                 print(fisrtEvolutionUrl)
                 cell.imgViewFirstEvolution?.kf.setImage(with: fisrtEvolutionUrl)
@@ -391,6 +376,24 @@ extension PokemonDetailViewController: UITableViewDataSource {
                 cell.lblLevelMove.text = "Level \(move?.versionGroupDetails?[0].levelLearnedAt ?? 0)"
             }
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch typeSectionSelected {
+        case .STATS:
+            return 30
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch typeSectionSelected {
+        case .STATS:
+            return UIView()
+        default:
+            return UIView()
         }
     }
 }

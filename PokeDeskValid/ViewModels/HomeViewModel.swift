@@ -12,11 +12,17 @@ class HomeViewModel{
     private let pokemonManager = PokemonManager.get
     
     var pokemonListRes: ((PokemonListRes) -> Void)?
-    
+    var pokemonRes: ((PokemonRes) -> Void)?
 
     func getPokemonList(limit: Int, offset: Int, urlNextPage: String?){
         if let responseValue = pokemonListRes {
             pokemonManager.getPokemonList(limit: limit, offset: offset, urlNextPage: urlNextPage, responseValue: responseValue)
+        }
+    }
+    
+    func getPokemon(id: Int){
+        if let responseValue = pokemonRes {
+            pokemonManager.getPokemon(id: id, responseValue: responseValue)
         }
     }
 }

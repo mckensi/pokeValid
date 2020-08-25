@@ -100,6 +100,23 @@ class ViewController: UIViewController {
                 self.pokemonListToShow = self.pokemonList
             }
         }
+        
+        viewModel.pokemonRes = { response in
+            
+            let vc = PokemonDetailViewController.instantiateFromXIB() as PokemonDetailViewController
+            vc.modalPresentationStyle = .fullScreen
+            
+            if let url = URL(string: "\(PokemonImageApi.baseImageUrl)\(response.id ?? 0).png") {
+                vc.setImage(url: url)
+            }
+            vc.setIdPokemon(id: response.id ?? 0)
+            vc.setTitle(title: response.name ?? "")
+            vc.pokemon = response
+            self.present(vc, animated: true, completion: nil)
+            
+            
+            
+        }
     }
     
 }
@@ -114,17 +131,8 @@ extension ViewController : UITableViewDelegate {
         let idPokemon = charactersUrl?.last
         let idString = String(idPokemon ?? "")
         
-        let vc = PokemonDetailViewController.instantiateFromXIB() as PokemonDetailViewController
-        vc.modalPresentationStyle = .fullScreen
-        
-        if let url = URL(string: "\(PokemonImageApi.baseImageUrl)\(idPokemon!).png") {
-            vc.setImage(url: url)
-        }
-        
-        vc.setIdPokemon(id: Int(idString) ?? 0)
-        vc.setTitle(title: pokemon?.name ?? "")
-        
-        self.present(vc, animated: true, completion: nil)
+        viewModel.getPokemon(id: Int(idString) ?? 0)
+   
     }
     
 }

@@ -2,8 +2,8 @@
 //  PokemonTableViewCell.swift
 //  PokeDeskApp
 //
-//  Created by Daniel Murcia on 10/26/19.
-//  Copyright © 2019 Daniel Steven Murcia Almanza. All rights reserved.
+//  Created by Daniel Steven Murcia Almanza on 25/08/20.
+//  Copyright © 2020 selvamatic. All rights reserved.
 //
 
 import UIKit
