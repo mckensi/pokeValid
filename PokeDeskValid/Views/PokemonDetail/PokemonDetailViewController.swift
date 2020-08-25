@@ -382,7 +382,16 @@ extension PokemonDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch typeSectionSelected {
         case .STATS:
-            return 30
+            switch section {
+            case 0:
+                return 0
+            case 1:
+                return 50
+            case 2:
+                return 50
+            default:
+                return 0
+            }
         default:
             return 0
         }
@@ -391,7 +400,24 @@ extension PokemonDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch typeSectionSelected {
         case .STATS:
-            return UIView()
+            switch section {
+            case 0:
+                return UIView()
+            case 1:
+                let headerWeaknesses = HeaderStatsView.instanceFromNib() as? HeaderStatsView
+                headerWeaknesses?.lblTitleHeader.text = "Weaknesses"
+                headerWeaknesses?.lblTitleHeader.textColor = UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor)
+                return headerWeaknesses ?? UIView()
+            case 2:
+                let headerWeaknesses = HeaderStatsView.instanceFromNib() as? HeaderStatsView
+                headerWeaknesses?.lblTitleHeader.text = "Abilities"
+                headerWeaknesses?.lblTitleHeader.textColor = UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor)
+                return headerWeaknesses ?? UIView()
+            default:
+                return UIView()
+            }
+            
+     
         default:
             return UIView()
         }

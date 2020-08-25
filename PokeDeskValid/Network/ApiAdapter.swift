@@ -32,8 +32,6 @@ class ApiAdapter {
             urlComponent.queryItems = queryItems
         }
         
-       // print("generic request URL \(urlComponent.debugDescription)")
-                
         alamofireManager.request(urlComponent, method: method, parameters: body, encoding: JSONEncoding.prettyPrinted, headers: headers).responseDecodable(completionHandler: completionHandler)
     }
     

@@ -11,4 +11,8 @@ import UIKit
 
 class HeaderStatsView : UIView{
     @IBOutlet weak var lblTitleHeader: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
