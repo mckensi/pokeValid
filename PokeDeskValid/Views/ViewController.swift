@@ -138,14 +138,7 @@ extension ViewController : UITableViewDataSource{
         
         let pokemon = self.pokemonListToShow?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell") as? PokemonTableViewCell
-        cell?.lblTitle.text = pokemon?.name?.capitalizingFirstLetter() ?? ""
-        
-        let charactersUrl = pokemon?.url?.split(separator: "/")
-        let idPokemon = charactersUrl?.last ?? ""
-        
-        if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon).png") {
-            cell?.imageView?.kf.setImage(with: url)
-        }
+        cell?.pokemon = pokemon
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
