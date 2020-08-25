@@ -223,3 +223,44 @@ extension String {
     }
 }
 
+
+func getImageForType(type: String) -> UIImage{
+       switch type {
+       case "normal":
+           return #imageLiteral(resourceName: "Normal")
+       case "fighting":
+           return #imageLiteral(resourceName: "Fight")
+       case "flying":
+           return #imageLiteral(resourceName: "Flying")
+       case "poison":
+           return #imageLiteral(resourceName: "Poison")
+       case "ground":
+           return #imageLiteral(resourceName: "Ground")
+       case "rock":
+           return #imageLiteral(resourceName: "Rock")
+       case "bug":
+           return #imageLiteral(resourceName: "Bug")
+       case "ghost":
+           return #imageLiteral(resourceName: "Ghost")
+       case "electric":
+           return #imageLiteral(resourceName: "Electric")
+       case "steel":
+           return #imageLiteral(resourceName: "Steel")
+       case "fire":
+           return #imageLiteral(resourceName: "Fire")
+       case "water":
+           return #imageLiteral(resourceName: "Water")
+       case "grass":
+           return #imageLiteral(resourceName: "Grass")
+       case "psychic":
+           return #imageLiteral(resourceName: "Psychic")
+       case "ice":
+           return #imageLiteral(resourceName: "Ice")
+       case "dragon":
+           return #imageLiteral(resourceName: "Dragon")
+       case "dark":
+           return #imageLiteral(resourceName: "Dark")
+       default:
+           return #imageLiteral(resourceName: "Normal")
+       }
+   }

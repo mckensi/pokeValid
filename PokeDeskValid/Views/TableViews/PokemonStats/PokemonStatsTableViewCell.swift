@@ -39,6 +39,23 @@ class PokemonStatsTableViewCell: UITableViewCell {
     private var fivethStat : Int?
     private var sixthStat : Int?
 
+    var stats : [String:Int]? {
+        didSet {
+                firtsProgressBar?.progress = Float((Double(stats?["hp"] ?? 0) / 100))
+                secondProgressBar?.progress = Float((Double(stats?["attack"] ?? 0) / 100))
+                thirdProgressBar?.progress = Float((Double(stats?["defense"] ?? 0) / 100))
+                fourthProgressBar?.progress = Float((Double(stats?["special-attack"] ?? 0) / 100))
+                fivethProgressBar?.progress = Float((Double(stats?["special-defense"] ?? 0) / 100))
+                sixthProgressBar?.progress = Float((Double(stats?["speed"] ?? 0) / 100))
+                
+                lblHpStat?.text = "\(stats?["hp"] ?? 0)"
+                lblAtackStack?.text = "\(stats?["attack"] ?? 0)"
+                lblDefStack?.text = "\(stats?["defense"] ?? 0)"
+                lblSuperAtackStat?.text = "\(stats?["special-attack"] ?? 0)"
+                lblSuperDefStat?.text = "\(stats?["special-defense"] ?? 0)"
+                lblSpeedStat?.text = "\(stats?["speed"] ?? 0)"
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -30,8 +30,10 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var btnStats: UIButton!
     @IBOutlet weak var btnEvolutions: UIButton!
     @IBOutlet weak var btnMovements: UIButton!
-    @IBOutlet weak var lblTypePokemon: UILabel!
     @IBOutlet weak var containerViewTypePokemon: UIView!
+    
+    @IBOutlet weak var imgFirstType: UIImageView!
+    @IBOutlet weak var imgSecondType: UIImageView!
     
     @IBOutlet weak var containerViewButtonStats: UIView!
     @IBOutlet weak var containerViewButtonsEvolutions: UIView!
@@ -114,7 +116,6 @@ class PokemonDetailViewController: UIViewController {
         lblTitleWithImage.text = titleForLabels?.capitalizingFirstLetter()
         
         containerViewTypePokemon.layer.cornerRadius = 10
-        
         containerViewButtonStats.layer.cornerRadius = 14
         containerViewButtonsEvolutions.layer.cornerRadius = 14
         containerViewButtonMoves.layer.cornerRadius = 14
@@ -193,15 +194,30 @@ class PokemonDetailViewController: UIViewController {
             
             self?.abilities = response.abilities
             self?.moves = response.moves
-            if response.types?.count != 0{
+            if let numberOfTypes = response.types?.count, numberOfTypes != 0{
                 self?.containerViewTypePokemon.isHidden = false
-                self?.lblTypePokemon.isHidden = false
-                self?.lblTypePokemon.text = response.types?[0].type?.name ?? ""
+                
+                if numberOfTypes == 1{
+                    self?.imgSecondType.isHidden = true
+                    if let type = response.types?[0].type?.name {
+                        self?.imgFirstType.image = getImageForType(type: type)
+                    }
+                 
+                }else{
+                
+                    if let type = response.types?[0].type?.name {
+                        self?.imgFirstType.image = getImageForType(type: type)
+                    }
+                    if let secondType = response.types?[1].type?.name {
+                        self?.imgSecondType.image = getImageForType(type: secondType)
+                    }
+                    self?.imgSecondType.isHidden = false
+                    
+                }
+                
             }else{
                 self?.containerViewTypePokemon.isHidden = true
-                self?.lblTypePokemon.isHidden = true
             }
-            
             
         }
         
@@ -302,23 +318,9 @@ extension PokemonDetailViewController: UITableViewDataSource {
         case .STATS:
             switch indexPath.section {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell") as! PokemonStatsTableViewCell
-                
-                cell.firtsProgressBar.progress = Float((Double(stats?["hp"] ?? 0) / 100))
-                cell.secondProgressBar.progress = Float((Double(stats?["attack"] ?? 0) / 100))
-                cell.thirdProgressBar.progress = Float((Double(stats?["defense"] ?? 0) / 100))
-                cell.fourthProgressBar.progress = Float((Double(stats?["special-attack"] ?? 0) / 100))
-                cell.fivethProgressBar.progress = Float((Double(stats?["special-defense"] ?? 0) / 100))
-                cell.sixthProgressBar.progress = Float((Double(stats?["speed"] ?? 0) / 100))
-                
-                cell.lblHpStat.text = "\(stats?["hp"] ?? 0)"
-                cell.lblAtackStack.text = "\(stats?["attack"] ?? 0)"
-                cell.lblDefStack.text = "\(stats?["defense"] ?? 0)"
-                cell.lblSuperAtackStat.text = "\(stats?["special-attack"] ?? 0)"
-                cell.lblSuperDefStat.text = "\(stats?["special-defense"] ?? 0)"
-                cell.lblSpeedStat.text = "\(stats?["speed"] ?? 0)"
-                
-                return cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell") as? PokemonStatsTableViewCell
+                cell?.stats = stats
+                return cell ?? UITableViewCell()
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "weaknessesCell") as! PokemonWeaknessesTableViewCell
                 return cell
@@ -354,12 +356,12 @@ extension PokemonDetailViewController: UITableViewDataSource {
             }
             
             
-            if let fisrtEvolutionUrl = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idString).png") {
+            if let fisrtEvolutionUrl = URL(string: "\(PokemonImageApi.baseImageUrl)\(idString).png") {
                 print(fisrtEvolutionUrl)
                 cell.imgViewFirstEvolution?.kf.setImage(with: fisrtEvolutionUrl)
             }
             
-            if let secondEvolutionUrl = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(id2 ?? "1").png") {
+            if let secondEvolutionUrl = URL(string: "\(PokemonImageApi.baseImageUrl)\(id2 ?? "1").png") {
                 print(secondEvolutionUrl)
                 cell.imgViewSecondEvolution?.kf.setImage(with: secondEvolutionUrl)
             }
