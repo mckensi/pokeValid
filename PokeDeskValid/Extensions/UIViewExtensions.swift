@@ -264,3 +264,45 @@ func getImageForType(type: String) -> UIImage{
            return #imageLiteral(resourceName: "Normal")
        }
    }
+
+
+func getColorTypePokemon(type: String) -> [CGColor]{
+       switch type {
+       case "normal":
+           return [#colorLiteral(red: 0.5725490196, green: 0.5960784314, blue: 0.6431372549, alpha: 1).cgColor,#colorLiteral(red: 0.6392156863, green: 0.6431372549, blue: 0.6196078431, alpha: 1).cgColor]
+       case "fighting":
+           return [#colorLiteral(red: 0.3333333333, green: 0.6196078431, blue: 0.8745098039, alpha: 1).cgColor,#colorLiteral(red: 0.3333333333, green: 0.6196078431, blue: 0.8745098039, alpha: 1).cgColor]
+       case "flying":
+           return [#colorLiteral(red: 0.5647058824, green: 0.6549019608, blue: 0.8549019608, alpha: 1).cgColor,#colorLiteral(red: 0.6509803922, green: 0.7607843137, blue: 0.9490196078, alpha: 1).cgColor]
+       case "poison":
+           return [#colorLiteral(red: 0.6588235294, green: 0.3921568627, blue: 0.7803921569, alpha: 1).cgColor,#colorLiteral(red: 0.7607843137, green: 0.3803921569, blue: 0.831372549, alpha: 1).cgColor]
+       case "ground":
+           return [#colorLiteral(red: 0.862745098, green: 0.4588235294, blue: 0.2705882353, alpha: 1).cgColor,#colorLiteral(red: 0.8235294118, green: 0.5803921569, blue: 0.3882352941, alpha: 1).cgColor]
+       case "rock":
+           return [#colorLiteral(red: 0.7725490196, green: 0.7058823529, blue: 0.537254902, alpha: 1).cgColor,#colorLiteral(red: 0.8431372549, green: 0.8039215686, blue: 0.5647058824, alpha: 1).cgColor]
+       case "bug":
+           return [#colorLiteral(red: 0.5725490196, green: 0.737254902, blue: 0.1725490196, alpha: 1).cgColor,#colorLiteral(red: 0.6862745098, green: 0.7843137255, blue: 0.2117647059, alpha: 1).cgColor]
+       case "ghost":
+           return [#colorLiteral(red: 0.3176470588, green: 0.4156862745, blue: 0.6745098039, alpha: 1).cgColor,#colorLiteral(red: 0.4666666667, green: 0.4509803922, blue: 0.831372549, alpha: 1).cgColor]
+       case "electric":
+           return [#colorLiteral(red: 0.9294117647, green: 0.8352941176, blue: 0.2431372549, alpha: 1).cgColor,#colorLiteral(red: 0.9843137255, green: 0.8862745098, blue: 0.4509803922, alpha: 1).cgColor]
+       case "steel":
+           return [#colorLiteral(red: 0.3215686275, green: 0.5254901961, blue: 0.6156862745, alpha: 1).cgColor,#colorLiteral(red: 0.3450980392, green: 0.6509803922, blue: 0.6666666667, alpha: 1).cgColor]
+       case "fire":
+           return [#colorLiteral(red: 0.9843137255, green: 0.6078431373, blue: 0.3176470588, alpha: 1).cgColor,#colorLiteral(red: 0.9843137255, green: 0.6823529412, blue: 0.2745098039, alpha: 1).cgColor]
+       case "water":
+           return [#colorLiteral(red: 0.3333333333, green: 0.6196078431, blue: 0.8745098039, alpha: 1).cgColor,#colorLiteral(red: 0.3333333333, green: 0.6196078431, blue: 0.8745098039, alpha: 1).cgColor]
+       case "grass":
+           return [#colorLiteral(red: 0.3725490196, green: 0.737254902, blue: 0.3176470588, alpha: 1).cgColor,#colorLiteral(red: 0.3529411765, green: 0.7568627451, blue: 0.4705882353, alpha: 1).cgColor]
+       case "psychic":
+           return [#colorLiteral(red: 0.9647058824, green: 0.4352941176, blue: 0.4431372549, alpha: 1).cgColor,#colorLiteral(red: 0.9960784314, green: 0.6235294118, blue: 0.5725490196, alpha: 1).cgColor]
+       case "ice":
+           return [#colorLiteral(red: 0.4392156863, green: 0.8, blue: 0.7411764706, alpha: 1).cgColor,#colorLiteral(red: 0.5490196078, green: 0.8666666667, blue: 0.831372549, alpha: 1).cgColor]
+       case "dragon":
+           return [#colorLiteral(red: 0.04705882353, green: 0.4117647059, blue: 0.7843137255, alpha: 1).cgColor,#colorLiteral(red: 0.003921568627, green: 0.5019607843, blue: 0.7803921569, alpha: 1).cgColor]
+       case "dark":
+           return [#colorLiteral(red: 0.3490196078, green: 0.3411764706, blue: 0.3803921569, alpha: 1).cgColor,#colorLiteral(red: 0.431372549, green: 0.4588235294, blue: 0.5294117647, alpha: 1).cgColor]
+       default:
+           return [#colorLiteral(red: 0.5725490196, green: 0.5960784314, blue: 0.6431372549, alpha: 1).cgColor,#colorLiteral(red: 0.6392156863, green: 0.6431372549, blue: 0.6196078431, alpha: 1).cgColor]
+       }
+   }

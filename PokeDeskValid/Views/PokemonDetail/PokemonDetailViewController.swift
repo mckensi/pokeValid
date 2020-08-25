@@ -64,6 +64,14 @@ class PokemonDetailViewController: UIViewController {
         }
     }
     
+    private var colors : [CGColor]? {
+        didSet{
+            btnStats?.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
+            btnEvolutions?.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
+            btnMovements?.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
+        }
+    }
+    
     private var abilities : [Ability]? {
         didSet {
             tableView.reloadData()
@@ -99,7 +107,6 @@ class PokemonDetailViewController: UIViewController {
     }
     
     private func setUpUI(){
-        setHeaderGradient()
         setUpTable()
         initListener()
         
@@ -119,6 +126,9 @@ class PokemonDetailViewController: UIViewController {
         containerViewButtonStats.layer.cornerRadius = 14
         containerViewButtonsEvolutions.layer.cornerRadius = 14
         containerViewButtonMoves.layer.cornerRadius = 14
+        
+
+      
         
     }
     
@@ -143,19 +153,19 @@ class PokemonDetailViewController: UIViewController {
         
     }
     
-    private func setHeaderGradient(){
+    private func setHeaderGradient(type: String){
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.viewHeaderContainer.bounds
-        let colorStart = #colorLiteral(red: 0.3333333333, green: 0.6196078431, blue: 0.8745098039, alpha: 1).cgColor
-        let colorEnd = #colorLiteral(red: 0.4117647059, green: 0.7254901961, blue: 0.8901960784, alpha: 1).cgColor
-        gradientLayer.colors = [colorStart, colorEnd]
+        let colors = getColorTypePokemon(type: type)
+        self.colors = colors
+        gradientLayer.colors = [colors.first, colors.last]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.viewHeaderContainer.layer.insertSublayer(gradientLayer, at: 0)
         
         let gradientLayerBackTitle = CAGradientLayer()
         gradientLayerBackTitle.frame = self.containerTitleView.bounds
-        gradientLayerBackTitle.colors = [colorStart, colorEnd]
+        gradientLayerBackTitle.colors = [colors.first, colors.last]
         gradientLayerBackTitle.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayerBackTitle.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.containerTitleView.layer.insertSublayer(gradientLayerBackTitle, at: 0)
@@ -188,7 +198,8 @@ class PokemonDetailViewController: UIViewController {
             print(response.stats?[0].baseStat ?? "")
             
             self?.stats = [String: Int]()
-            for stats in response.stats!{
+            guard let stats = response.stats else {return}
+            for stats in stats{
                 self?.stats?.updateValue(stats.baseStat ?? 0, forKey: stats.stat?.name ?? "")
             }
             
@@ -198,14 +209,17 @@ class PokemonDetailViewController: UIViewController {
                 self?.containerViewTypePokemon.isHidden = false
                 
                 if numberOfTypes == 1{
+                
                     self?.imgSecondType.isHidden = true
                     if let type = response.types?[0].type?.name {
+                        
+                        self?.setHeaderGradient(type: type)
                         self?.imgFirstType.image = getImageForType(type: type)
                     }
                  
                 }else{
-                
                     if let type = response.types?[0].type?.name {
+                        self?.setHeaderGradient(type: type)
                         self?.imgFirstType.image = getImageForType(type: type)
                     }
                     if let secondType = response.types?[1].type?.name {
@@ -242,35 +256,35 @@ class PokemonDetailViewController: UIViewController {
     
     @IBAction func actionStats(_ sender: Any) {
         self.typeSectionSelected = .STATS
-        containerViewButtonStats.backgroundColor = #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)
-        containerViewButtonsEvolutions.backgroundColor = .white
-        containerViewButtonMoves.backgroundColor = .white
+        containerViewButtonStats.backgroundColor = UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1))
+        containerViewButtonsEvolutions.backgroundColor = .systemBackground
+        containerViewButtonMoves.backgroundColor = .systemBackground
         
         btnStats.setTitleColor(.white, for: .normal)
-        btnEvolutions.setTitleColor(#colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1), for: .normal)
-        btnMovements.setTitleColor(#colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1), for: .normal)
+        btnEvolutions.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
+        btnMovements.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
     }
     
     @IBAction func actionEvolutions(_ sender: Any) {
         self.typeSectionSelected = .EVOLUTIONS
-        containerViewButtonsEvolutions.backgroundColor = #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)
-        containerViewButtonStats.backgroundColor = .white
-        containerViewButtonMoves.backgroundColor = .white
+        containerViewButtonsEvolutions.backgroundColor =  UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1))
+        containerViewButtonStats.backgroundColor = .systemBackground
+        containerViewButtonMoves.backgroundColor = .systemBackground
         
         btnEvolutions.setTitleColor(.white, for: .normal)
-        btnStats.setTitleColor(#colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1), for: .normal)
-        btnMovements.setTitleColor(#colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1), for: .normal)
+        btnStats.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
+        btnMovements.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
     }
     
     @IBAction func actionMoves(_ sender: Any) {
         self.typeSectionSelected = .MOVEMENTS
-        containerViewButtonMoves.backgroundColor = #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)
-        containerViewButtonStats.backgroundColor = .white
-        containerViewButtonsEvolutions.backgroundColor = .white
+        containerViewButtonMoves.backgroundColor = UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1))
+        containerViewButtonStats.backgroundColor = .systemBackground
+        containerViewButtonsEvolutions.backgroundColor = .systemBackground
         
         btnMovements.setTitleColor(.white, for: .normal)
-        btnStats.setTitleColor(#colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1), for: .normal)
-        btnEvolutions.setTitleColor(#colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1), for: .normal)
+        btnStats.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
+        btnEvolutions.setTitleColor(UIColor(cgColor: colors?.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1)), for: .normal)
     }
 }
 
@@ -320,6 +334,7 @@ extension PokemonDetailViewController: UITableViewDataSource {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell") as? PokemonStatsTableViewCell
                 cell?.stats = stats
+                cell?.colors = self.colors
                 return cell ?? UITableViewCell()
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "weaknessesCell") as! PokemonWeaknessesTableViewCell

@@ -24,6 +24,14 @@ class PokemonStatsTableViewCell: UITableViewCell {
     @IBOutlet weak var sixthProgressBar: GradientProgressBar!
     
     
+    @IBOutlet weak var lblHpTitle: UILabel!
+    @IBOutlet weak var lblAttackTitle: UILabel!
+    @IBOutlet weak var lblDefTitle: UILabel!
+    @IBOutlet weak var lblSuperAttackTitle: UILabel!
+    @IBOutlet weak var lblSuperDefTitle: UILabel!
+    @IBOutlet weak var lblSpeedTitle: UILabel!
+    
+    
     @IBOutlet weak var lblHpStat: UILabel!
     @IBOutlet weak var lblAtackStack: UILabel!
     @IBOutlet weak var lblDefStack: UILabel!
@@ -38,6 +46,25 @@ class PokemonStatsTableViewCell: UITableViewCell {
     private var fourthStat : Int?
     private var fivethStat : Int?
     private var sixthStat : Int?
+    
+    var colors : [CGColor]? {
+        didSet{
+            guard let colors = self.colors else {return}
+            firtsProgressBar?.gradientColors = colors
+            secondProgressBar?.gradientColors = colors
+            thirdProgressBar?.gradientColors = colors
+            fourthProgressBar?.gradientColors = colors
+            fivethProgressBar?.gradientColors = colors
+            sixthProgressBar?.gradientColors = colors
+            
+            lblHpTitle.textColor = UIColor(cgColor: colors.first!)
+            lblAttackTitle.textColor = UIColor(cgColor: colors.first!)
+            lblDefTitle.textColor = UIColor(cgColor: colors.first!)
+            lblSuperAttackTitle.textColor = UIColor(cgColor: colors.first!)
+            lblSuperDefTitle.textColor = UIColor(cgColor: colors.first!)
+            lblSpeedTitle.textColor = UIColor(cgColor: colors.first!)
+        }
+    }
 
     var stats : [String:Int]? {
         didSet {
@@ -60,25 +87,11 @@ class PokemonStatsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         firtsProgressBar.cornerRadius = 4
-        let colorFirst = #colorLiteral(red: 0.4120000005, green: 0.7250000238, blue: 0.8899999857, alpha: 1).cgColor
-        let colorEnd = #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor
-        firtsProgressBar.gradientColors = [colorFirst, colorEnd]
-        
         secondProgressBar.cornerRadius = 4
-        secondProgressBar.gradientColors = [colorFirst, colorEnd]
-        
         thirdProgressBar.cornerRadius = 4
-        thirdProgressBar.gradientColors = [colorFirst, colorEnd]
-        
         fourthProgressBar.cornerRadius = 4
-        fourthProgressBar.gradientColors = [colorFirst, colorEnd]
-        
         fivethProgressBar.cornerRadius = 4
-        fivethProgressBar.gradientColors = [colorFirst, colorEnd]
-        
         sixthProgressBar.cornerRadius = 4
-        sixthProgressBar.gradientColors = [colorFirst, colorEnd]
-    
     }
     
     func setStats(first: Int, second: Int, third: Int, fourth: Int, fiveth: Int, sixth: Int){

@@ -291,11 +291,17 @@
                 <outlet property="fivethProgressBar" destination="2MM-py-nA4" id="Cj1-aC-37z"/>
                 <outlet property="fourthProgressBar" destination="eZk-Y1-x6b" id="TZH-hJ-2H1"/>
                 <outlet property="lblAtackStack" destination="bDC-b5-ZOq" id="aEJ-ON-3gw"/>
+                <outlet property="lblAttackTitle" destination="OE4-c6-w91" id="DhQ-77-Quc"/>
                 <outlet property="lblDefStack" destination="eFb-h8-yNy" id="fzY-eD-y0g"/>
+                <outlet property="lblDefTitle" destination="0DL-Li-70R" id="ESW-IV-ztg"/>
                 <outlet property="lblHpStat" destination="1eV-HO-m1N" id="VTo-L7-Gag"/>
+                <outlet property="lblHpTitle" destination="7Vl-jh-vj6" id="0yN-uV-oeX"/>
                 <outlet property="lblSpeedStat" destination="CYn-KK-WB8" id="cyP-6X-T9I"/>
+                <outlet property="lblSpeedTitle" destination="zV3-ID-Mgw" id="r1R-Tz-Oq5"/>
                 <outlet property="lblSuperAtackStat" destination="Mfp-Xa-ltC" id="tU1-Mc-stj"/>
+                <outlet property="lblSuperAttackTitle" destination="bqS-wV-eMI" id="RmX-sN-18G"/>
                 <outlet property="lblSuperDefStat" destination="Bci-3B-dIe" id="5Ip-h3-crp"/>
+                <outlet property="lblSuperDefTitle" destination="986-Or-Yeh" id="dra-lg-o83"/>
                 <outlet property="secondProgressBar" destination="ud0-ec-ffo" id="Dos-y6-Sh0"/>
                 <outlet property="sixthProgressBar" destination="JlL-d0-tRD" id="1AU-P1-b3T"/>
                 <outlet property="thirdProgressBar" destination="jRQ-Rl-AWf" id="vhe-FG-f7j"/>
