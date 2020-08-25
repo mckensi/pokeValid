@@ -28,3 +28,6 @@ struct PokemonApi {
     
 }
 
+struct PokemonImageApi {
+    static let baseImageUrl = "https://pokeres.bastionbot.org/images/pokemon/"
+}

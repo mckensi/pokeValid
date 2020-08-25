@@ -1,9 +1,9 @@
 //
 //  PokemonDetailViewController.swift
-//  PokeDeskValid
+//  PokeDeskApp
 //
-//  Created by Daniel Steven Murcia Almanza on 25/08/20.
-//  Copyright © 2020 selvamatic. All rights reserved.
+//  Created by Daniel Steven MURCIA ALMANZA on 10/24/19.
+//  Copyright © 2019 Daniel Steven Murcia Almanza. All rights reserved.
 //
 
 import Foundation
@@ -501,4 +501,3 @@ extension UIView {
         layer.mask = mask
     }
 }
-

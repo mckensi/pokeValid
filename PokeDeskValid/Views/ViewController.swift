@@ -12,8 +12,8 @@ import IQKeyboardManagerSwift
 
 class ViewController: UIViewController {
     
+    //MARK: IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -117,7 +117,7 @@ extension ViewController : UITableViewDelegate {
         let vc = PokemonDetailViewController.instantiateFromXIB() as PokemonDetailViewController
         vc.modalPresentationStyle = .fullScreen
         
-        if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon!).png") {
+        if let url = URL(string: "\(PokemonImageApi.baseImageUrl)\(idPokemon!).png") {
             vc.setImage(url: url)
         }
         
@@ -137,19 +137,17 @@ extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let pokemon = self.pokemonListToShow?[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell") as! PokemonTableViewCell
-        cell.lblTitle.text = pokemon?.name?.capitalizingFirstLetter() ?? ""
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell") as? PokemonTableViewCell
+        cell?.lblTitle.text = pokemon?.name?.capitalizingFirstLetter() ?? ""
         
         let charactersUrl = pokemon?.url?.split(separator: "/")
         let idPokemon = charactersUrl?.last ?? ""
         
         if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon).png") {
-            cell.imageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cacheType, URL) in
-                cell.setNeedsLayout()
-            })
+            cell?.imageView?.kf.setImage(with: url)
         }
-        cell.selectionStyle = .none
-        return cell
+        cell?.selectionStyle = .none
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -165,7 +163,7 @@ extension ViewController : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             showFilteredList = true
-            pokemonListToShow = pokemonList?.filter {($0.name?.contains(searchText.lowercased())) as! Bool }
+            pokemonListToShow = pokemonList?.filter {(($0.name?.contains(searchText.lowercased())) ?? false) }
         }else{
             showFilteredList = false
             pokemonListToShow = pokemonList
