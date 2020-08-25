@@ -1,0 +1,6 @@
+framework module Pods_PokeDeskValidTests {
+  umbrella header "Pods-PokeDeskValidTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

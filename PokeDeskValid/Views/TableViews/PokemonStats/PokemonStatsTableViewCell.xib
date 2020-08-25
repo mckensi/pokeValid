@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="PokemonStatsTableViewCell" customModule="PokeDeskApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03z-x7-4iq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vl-jh-vj6">
+                                <rect key="frame" x="20" y="4.5" width="38" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Jut-Wc-Wf6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                <color key="textColor" name="blue_start"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hd-G1-XoI" customClass="GradientProgressBar" customModule="GradientProgress">
+                                <rect key="frame" x="104" y="7.5" width="196" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="VnZ-P2-oh9"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eV-HO-m1N">
+                                <rect key="frame" x="66" y="3" width="30" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="F3m-MC-Lfj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7Vl-jh-vj6" firstAttribute="centerY" secondItem="03z-x7-4iq" secondAttribute="centerY" id="494-xY-78y"/>
+                            <constraint firstItem="3hd-G1-XoI" firstAttribute="leading" secondItem="1eV-HO-m1N" secondAttribute="trailing" constant="8" id="7ik-AC-bfK"/>
+                            <constraint firstItem="1eV-HO-m1N" firstAttribute="centerY" secondItem="03z-x7-4iq" secondAttribute="centerY" id="COn-Go-02O"/>
+                            <constraint firstItem="7Vl-jh-vj6" firstAttribute="leading" secondItem="03z-x7-4iq" secondAttribute="leading" constant="20" id="LoD-CO-atG"/>
+                            <constraint firstItem="1eV-HO-m1N" firstAttribute="leading" secondItem="7Vl-jh-vj6" secondAttribute="trailing" constant="8" id="On9-5Y-wb0"/>
+                            <constraint firstAttribute="trailing" secondItem="3hd-G1-XoI" secondAttribute="trailing" constant="20" id="Wcz-Mx-rk4"/>
+                            <constraint firstItem="3hd-G1-XoI" firstAttribute="centerY" secondItem="03z-x7-4iq" secondAttribute="centerY" id="k7r-AF-TbF"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqa-lp-HWf">
+                        <rect key="frame" x="0.0" y="25" width="320" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE4-c6-w91">
+                                <rect key="frame" x="20" y="4.5" width="38" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Wuo-PS-o5h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                <color key="textColor" name="blue_start"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud0-ec-ffo" customClass="GradientProgressBar" customModule="GradientProgress">
+                                <rect key="frame" x="104" y="8" width="196" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="gEp-mh-n1s"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDC-b5-ZOq">
+                                <rect key="frame" x="66" y="3" width="30" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="kvG-b9-xeR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ud0-ec-ffo" secondAttribute="trailing" constant="20" id="4JY-de-yuK"/>
+                            <constraint firstItem="OE4-c6-w91" firstAttribute="centerY" secondItem="vqa-lp-HWf" secondAttribute="centerY" id="9BU-rS-5ir"/>
+                            <constraint firstItem="bDC-b5-ZOq" firstAttribute="centerY" secondItem="vqa-lp-HWf" secondAttribute="centerY" id="Kmb-fG-Chw"/>
+                            <constraint firstItem="ud0-ec-ffo" firstAttribute="leading" secondItem="bDC-b5-ZOq" secondAttribute="trailing" constant="8" id="Z0d-o1-6m9"/>
+                            <constraint firstItem="OE4-c6-w91" firstAttribute="leading" secondItem="vqa-lp-HWf" secondAttribute="leading" constant="20" id="ieL-JG-5fO"/>
+                            <constraint firstItem="bDC-b5-ZOq" firstAttribute="leading" secondItem="OE4-c6-w91" secondAttribute="trailing" constant="8" id="r5p-2z-eHZ"/>
+                            <constraint firstItem="ud0-ec-ffo" firstAttribute="centerY" secondItem="vqa-lp-HWf" secondAttribute="centerY" id="uwL-TH-7fu"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M09-dW-DyL">
+                        <rect key="frame" x="0.0" y="50.5" width="320" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DL-Li-70R">
+                                <rect key="frame" x="20" y="4" width="38" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="73e-NY-4Yd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                <color key="textColor" name="blue_start"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRQ-Rl-AWf" customClass="GradientProgressBar" customModule="GradientProgress">
+                                <rect key="frame" x="104" y="7.5" width="196" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="TEf-jB-o4g"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFb-h8-yNy">
+                                <rect key="frame" x="66" y="2.5" width="30" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="3Fs-43-F83"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jRQ-Rl-AWf" firstAttribute="centerY" secondItem="M09-dW-DyL" secondAttribute="centerY" id="3Zm-GI-bkO"/>
+                            <constraint firstAttribute="trailing" secondItem="jRQ-Rl-AWf" secondAttribute="trailing" constant="20" id="9vD-ks-a32"/>
+                            <constraint firstItem="0DL-Li-70R" firstAttribute="centerY" secondItem="M09-dW-DyL" secondAttribute="centerY" id="E2U-eQ-N8D"/>
+                            <constraint firstItem="jRQ-Rl-AWf" firstAttribute="leading" secondItem="eFb-h8-yNy" secondAttribute="trailing" constant="8" id="SFd-i6-nIT"/>
+                            <constraint firstItem="eFb-h8-yNy" firstAttribute="leading" secondItem="0DL-Li-70R" secondAttribute="trailing" constant="8" id="aI8-Go-FnV"/>
+                            <constraint firstItem="eFb-h8-yNy" firstAttribute="centerY" secondItem="M09-dW-DyL" secondAttribute="centerY" id="aae-Gl-9lD"/>
+                            <constraint firstItem="0DL-Li-70R" firstAttribute="leading" secondItem="M09-dW-DyL" secondAttribute="leading" constant="20" id="hFi-Xs-r5I"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56G-Qs-eiE">
+                        <rect key="frame" x="0.0" y="75.5" width="320" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SATK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqS-wV-eMI">
+                                <rect key="frame" x="20" y="4.5" width="38" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="SNw-SF-U6u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                <color key="textColor" name="blue_start"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZk-Y1-x6b" customClass="GradientProgressBar" customModule="GradientProgress">
+                                <rect key="frame" x="104" y="7.5" width="196" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="B9Y-nr-uCM"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfp-Xa-ltC">
+                                <rect key="frame" x="66" y="3" width="30" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="LGU-G2-WgK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eZk-Y1-x6b" firstAttribute="leading" secondItem="Mfp-Xa-ltC" secondAttribute="trailing" constant="8" id="0ir-gd-yO2"/>
+                            <constraint firstAttribute="trailing" secondItem="eZk-Y1-x6b" secondAttribute="trailing" constant="20" id="5ny-fm-F1J"/>
+                            <constraint firstItem="eZk-Y1-x6b" firstAttribute="centerY" secondItem="56G-Qs-eiE" secondAttribute="centerY" id="BQ4-n8-ewO"/>
+                            <constraint firstItem="Mfp-Xa-ltC" firstAttribute="centerY" secondItem="56G-Qs-eiE" secondAttribute="centerY" id="LPg-fb-FqK"/>
+                            <constraint firstItem="bqS-wV-eMI" firstAttribute="centerY" secondItem="56G-Qs-eiE" secondAttribute="centerY" id="lfH-0P-SgE"/>
+                            <constraint firstItem="Mfp-Xa-ltC" firstAttribute="leading" secondItem="bqS-wV-eMI" secondAttribute="trailing" constant="8" id="sou-Rr-Pf8"/>
+                            <constraint firstItem="bqS-wV-eMI" firstAttribute="leading" secondItem="56G-Qs-eiE" secondAttribute="leading" constant="20" id="uoI-h5-02K"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLW-px-Oqa">
+                        <rect key="frame" x="0.0" y="100.5" width="320" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDEF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="986-Or-Yeh">
+                                <rect key="frame" x="20" y="4.5" width="38" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="fuh-6w-v3Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                <color key="textColor" name="blue_start"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MM-py-nA4" customClass="GradientProgressBar" customModule="GradientProgress">
+                                <rect key="frame" x="104" y="8" width="196" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="xXd-pO-pKO"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bci-3B-dIe">
+                                <rect key="frame" x="66" y="3" width="30" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ouE-o6-nhf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Bci-3B-dIe" firstAttribute="centerY" secondItem="RLW-px-Oqa" secondAttribute="centerY" id="AKV-P2-Js3"/>
+                            <constraint firstItem="Bci-3B-dIe" firstAttribute="leading" secondItem="986-Or-Yeh" secondAttribute="trailing" constant="8" id="CGv-01-shH"/>
+                            <constraint firstItem="986-Or-Yeh" firstAttribute="leading" secondItem="RLW-px-Oqa" secondAttribute="leading" constant="20" id="DhO-oV-MGH"/>
+                            <constraint firstItem="2MM-py-nA4" firstAttribute="leading" secondItem="Bci-3B-dIe" secondAttribute="trailing" constant="8" id="KAN-kU-m7c"/>
+                            <constraint firstAttribute="trailing" secondItem="2MM-py-nA4" secondAttribute="trailing" constant="20" id="eTL-Lu-V79"/>
+                            <constraint firstItem="986-Or-Yeh" firstAttribute="centerY" secondItem="RLW-px-Oqa" secondAttribute="centerY" id="fGx-J8-gwf"/>
+                            <constraint firstItem="2MM-py-nA4" firstAttribute="centerY" secondItem="RLW-px-Oqa" secondAttribute="centerY" id="rad-8k-nZc"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agd-cd-tRX">
+                        <rect key="frame" x="0.0" y="126" width="320" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zV3-ID-Mgw">
+                                <rect key="frame" x="20" y="4" width="38" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="aKe-Qv-hii"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                <color key="textColor" name="blue_start"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JlL-d0-tRD" customClass="GradientProgressBar" customModule="GradientProgress">
+                                <rect key="frame" x="104" y="7.5" width="196" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="vox-Ox-SFe"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYn-KK-WB8">
+                                <rect key="frame" x="66" y="2.5" width="30" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="OHe-sl-8pe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JlL-d0-tRD" firstAttribute="centerY" secondItem="Agd-cd-tRX" secondAttribute="centerY" id="1ME-K3-pM0"/>
+                            <constraint firstItem="CYn-KK-WB8" firstAttribute="leading" secondItem="zV3-ID-Mgw" secondAttribute="trailing" constant="8" id="EfC-d9-KCu"/>
+                            <constraint firstItem="zV3-ID-Mgw" firstAttribute="centerY" secondItem="Agd-cd-tRX" secondAttribute="centerY" id="GNL-NE-1Gd"/>
+                            <constraint firstItem="zV3-ID-Mgw" firstAttribute="leading" secondItem="Agd-cd-tRX" secondAttribute="leading" constant="20" id="Q9V-Ce-mbV"/>
+                            <constraint firstItem="CYn-KK-WB8" firstAttribute="centerY" secondItem="Agd-cd-tRX" secondAttribute="centerY" id="UrY-rH-vmx"/>
+                            <constraint firstAttribute="trailing" secondItem="JlL-d0-tRD" secondAttribute="trailing" constant="20" id="VOu-n1-iy5"/>
+                            <constraint firstItem="JlL-d0-tRD" firstAttribute="leading" secondItem="CYn-KK-WB8" secondAttribute="trailing" constant="8" id="tqh-cn-1X7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Agd-cd-tRX" firstAttribute="top" secondItem="RLW-px-Oqa" secondAttribute="bottom" id="1cy-KL-YzL"/>
+                    <constraint firstAttribute="trailing" secondItem="03z-x7-4iq" secondAttribute="trailing" id="6w3-AB-jVc"/>
+                    <constraint firstAttribute="trailing" secondItem="56G-Qs-eiE" secondAttribute="trailing" id="EUM-9L-fZs"/>
+                    <constraint firstAttribute="trailing" secondItem="RLW-px-Oqa" secondAttribute="trailing" id="FGe-dP-KaA"/>
+                    <constraint firstItem="03z-x7-4iq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NQb-R8-Rfk"/>
+                    <constraint firstItem="vqa-lp-HWf" firstAttribute="top" secondItem="03z-x7-4iq" secondAttribute="bottom" id="PLy-ce-4Jd"/>
+                    <constraint firstAttribute="trailing" secondItem="vqa-lp-HWf" secondAttribute="trailing" id="Phv-04-Wdp"/>
+                    <constraint firstItem="M09-dW-DyL" firstAttribute="top" secondItem="vqa-lp-HWf" secondAttribute="bottom" id="QSr-Cc-INK"/>
+                    <constraint firstAttribute="bottom" secondItem="Agd-cd-tRX" secondAttribute="bottom" id="SDd-Zc-gF4"/>
+                    <constraint firstItem="vqa-lp-HWf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SmE-IO-wak"/>
+                    <constraint firstItem="M09-dW-DyL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TpL-b4-LID"/>
+                    <constraint firstItem="56G-Qs-eiE" firstAttribute="height" secondItem="M09-dW-DyL" secondAttribute="height" id="VPH-mn-UTg"/>
+                    <constraint firstItem="Agd-cd-tRX" firstAttribute="height" secondItem="RLW-px-Oqa" secondAttribute="height" id="Yye-Cc-feW"/>
+                    <constraint firstAttribute="trailing" secondItem="Agd-cd-tRX" secondAttribute="trailing" id="b7H-4Z-qoE"/>
+                    <constraint firstAttribute="trailing" secondItem="M09-dW-DyL" secondAttribute="trailing" id="cyn-aY-Lqy"/>
+                    <constraint firstItem="Agd-cd-tRX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fyy-ms-dxE"/>
+                    <constraint firstItem="56G-Qs-eiE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="glg-wk-8jv"/>
+                    <constraint firstItem="56G-Qs-eiE" firstAttribute="top" secondItem="M09-dW-DyL" secondAttribute="bottom" id="hww-6J-yuv"/>
+                    <constraint firstItem="RLW-px-Oqa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iHz-bl-wGp"/>
+                    <constraint firstItem="M09-dW-DyL" firstAttribute="height" secondItem="vqa-lp-HWf" secondAttribute="height" id="ltA-SP-zOf"/>
+                    <constraint firstItem="03z-x7-4iq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qmw-8j-pty"/>
+                    <constraint firstItem="RLW-px-Oqa" firstAttribute="top" secondItem="56G-Qs-eiE" secondAttribute="bottom" id="v2h-2r-nk1"/>
+                    <constraint firstItem="RLW-px-Oqa" firstAttribute="height" secondItem="56G-Qs-eiE" secondAttribute="height" id="vr3-5c-Jpu"/>
+                    <constraint firstItem="vqa-lp-HWf" firstAttribute="height" secondItem="03z-x7-4iq" secondAttribute="height" id="xaX-HX-l4q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="firtsProgressBar" destination="3hd-G1-XoI" id="uak-Jq-Kyw"/>
+                <outlet property="fivethProgressBar" destination="2MM-py-nA4" id="Cj1-aC-37z"/>
+                <outlet property="fourthProgressBar" destination="eZk-Y1-x6b" id="TZH-hJ-2H1"/>
+                <outlet property="lblAtackStack" destination="bDC-b5-ZOq" id="aEJ-ON-3gw"/>
+                <outlet property="lblDefStack" destination="eFb-h8-yNy" id="fzY-eD-y0g"/>
+                <outlet property="lblHpStat" destination="1eV-HO-m1N" id="VTo-L7-Gag"/>
+                <outlet property="lblSpeedStat" destination="CYn-KK-WB8" id="cyP-6X-T9I"/>
+                <outlet property="lblSuperAtackStat" destination="Mfp-Xa-ltC" id="tU1-Mc-stj"/>
+                <outlet property="lblSuperDefStat" destination="Bci-3B-dIe" id="5Ip-h3-crp"/>
+                <outlet property="secondProgressBar" destination="ud0-ec-ffo" id="Dos-y6-Sh0"/>
+                <outlet property="sixthProgressBar" destination="JlL-d0-tRD" id="1AU-P1-b3T"/>
+                <outlet property="thirdProgressBar" destination="jRQ-Rl-AWf" id="vhe-FG-f7j"/>
+            </connections>
+            <point key="canvasLocation" x="136.23188405797103" y="174.44196428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="blue_start">
+            <color red="0.33300000429153442" green="0.62000000476837158" blue="0.875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
