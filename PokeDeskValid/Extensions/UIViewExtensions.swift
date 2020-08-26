@@ -265,6 +265,47 @@ func getImageForType(type: String) -> UIImage{
        }
    }
 
+func getImageMainForType(type: String) -> UIImage{
+    switch type {
+    case "normal":
+        return #imageLiteral(resourceName: "Types-Normal")
+    case "fighting":
+        return #imageLiteral(resourceName: "Types-Fight")
+    case "flying":
+        return #imageLiteral(resourceName: "Types-Flying")
+    case "poison":
+        return #imageLiteral(resourceName: "Types-Poison")
+    case "ground":
+        return #imageLiteral(resourceName: "Types-Ground")
+    case "rock":
+        return #imageLiteral(resourceName: "Types-Rock")
+    case "bug":
+        return #imageLiteral(resourceName: "Types-Bug")
+    case "ghost":
+        return #imageLiteral(resourceName: "Types-Ghost")
+    case "electric":
+        return #imageLiteral(resourceName: "Types-Electric")
+    case "steel":
+        return #imageLiteral(resourceName: "Types-Steel")
+    case "fire":
+        return #imageLiteral(resourceName: "Types-Fire")
+    case "water":
+        return #imageLiteral(resourceName: "Types-Water")
+    case "grass":
+        return #imageLiteral(resourceName: "Grass")
+    case "psychic":
+        return #imageLiteral(resourceName: "Types-Psychic")
+    case "ice":
+        return #imageLiteral(resourceName: "Types-Dragon")
+    case "dragon":
+        return #imageLiteral(resourceName: "Dragon")
+    case "dark":
+        return #imageLiteral(resourceName: "Types-Dark")
+    default:
+        return #imageLiteral(resourceName: "Normal")
+    }
+}
+
 
 func getColorTypePokemon(type: String) -> [CGColor]{
        switch type {

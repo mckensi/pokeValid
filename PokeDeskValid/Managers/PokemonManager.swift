@@ -32,4 +32,8 @@ class PokemonManager: NSObject {
     func getListItems(limit: Int, offset: Int, urlNextPage: String?, responseValue: @escaping (ListItemsRes) -> Void){
         pokemonService.getPokemonItemsList(limit: limit, offset: offset, nextPageUrl: urlNextPage, responseValue: responseValue)
     }
+    
+    func getMoveById(id: Int, responseValue: @escaping (MoveRes) -> Void){
+         pokemonService.getMoveById(id: id, responseValue: responseValue)
+     }
 }

@@ -60,11 +60,7 @@ class PokemonDetailViewController: UIViewController {
     private var titleForLabels: String?
     
     private var idPokemon : Int?
-    var pokemon : PokemonRes? {
-        didSet{
-       
-        }
-    }
+    var pokemon : PokemonRes?
     
     private var stats : [String:Int]? {
         didSet {

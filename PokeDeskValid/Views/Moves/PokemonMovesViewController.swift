@@ -67,6 +67,13 @@ class PokemonMovesViewController: UIViewController {
                 self?.tblViewMoves.reloadData()
             }
         }
+        
+        viewModel.moveRes = { [weak self] response in
+            let vc = MovesDetailViewController.instantiateFromXIB() as MovesDetailViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.move = response
+            self?.present(vc, animated: true, completion: nil)
+        }
     }
     
     private func setUpTableView(){
@@ -119,6 +126,15 @@ extension PokemonMovesViewController : UITableViewDataSource {
                viewModel.getListMoves(limit: 20, offset: 0, urlNextPage: urlNextPage)
            }
        }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let moveSelected = movesListShow?[indexPath.row]
+        let moveUrl = moveSelected?.url ?? ""
+        let charactersUrl = moveUrl.split(separator: "/")
+        let idMove = charactersUrl.last
+        let idString = String(idMove ?? "")
+        viewModel.getMoveById(id: Int(idString) ?? 0)
+    }
     
 }
 

@@ -26,6 +26,8 @@ struct PokemonApi {
     
     static let getItems = baseUrl + "/item/"
     
+    static let getMoveById = baseUrl + "/move/%d/"
+    
 }
 
 struct PokemonImageApi {
