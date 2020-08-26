@@ -19,9 +19,16 @@ class PokemonTableViewCell: UITableViewCell {
             lblTitle?.text = pokemon?.name?.capitalizingFirstLetter() ?? ""
             let charactersUrl = pokemon?.url?.split(separator: "/")
             let idPokemon = charactersUrl?.last ?? ""
-            if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon).png") {
-                imageView?.kf.setImage(with: url)
+            DispatchQueue.main.async {
+                if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon).png") {
+                    self.imageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cacheType, URL) in
+                        if error == nil{
+                            self.setNeedsLayout()
+                        }
+                    })
+                }
             }
+           
         }
     }
     

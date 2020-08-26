@@ -15,6 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zps-v7-dyv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PKf-hu-y0B">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T3p-Of-uLj">
                                 <rect key="frame" x="0.0" y="100" width="414" height="713"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -44,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511.59420289855075" y="-196.20535714285714"/>
+            <point key="canvasLocation" x="-936" y="508"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iEt-Om-Qjq">
@@ -58,14 +67,118 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="OJt-U9-cfV"/>
+                        <segue destination="gKC-O8-ESk" kind="relationship" relationship="viewControllers" id="ckw-nn-hpC"/>
+                        <segue destination="zu7-Tf-ntq" kind="relationship" relationship="viewControllers" id="f90-mF-2cc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Hu-KQ-94X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-433" y="115"/>
+            <point key="canvasLocation" x="-265" y="-221"/>
+        </scene>
+        <!--Moves-->
+        <scene sceneID="8SQ-0p-bab">
+            <objects>
+                <viewController id="gKC-O8-ESk" customClass="PokemonMovesViewController" customModule="PokeDeskValid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="alQ-b1-nYg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgF-2k-RQp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YfV-S1-xWg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rox-aO-T1H">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5KM-aw-uRL">
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5KM-aw-uRL" firstAttribute="top" secondItem="rox-aO-T1H" secondAttribute="bottom" id="0LX-ce-slF"/>
+                            <constraint firstItem="rNC-zm-14t" firstAttribute="trailing" secondItem="rox-aO-T1H" secondAttribute="trailing" id="13X-Du-tFE"/>
+                            <constraint firstItem="rNC-zm-14t" firstAttribute="bottom" secondItem="5KM-aw-uRL" secondAttribute="bottom" id="3HC-lA-8pA"/>
+                            <constraint firstItem="dgF-2k-RQp" firstAttribute="leading" secondItem="rNC-zm-14t" secondAttribute="leading" id="4Bg-OA-gLD"/>
+                            <constraint firstAttribute="bottom" secondItem="dgF-2k-RQp" secondAttribute="bottom" id="A8d-GR-C3t"/>
+                            <constraint firstItem="rox-aO-T1H" firstAttribute="top" secondItem="rNC-zm-14t" secondAttribute="top" id="Eh6-SX-Yry"/>
+                            <constraint firstAttribute="trailing" secondItem="5KM-aw-uRL" secondAttribute="trailing" id="Ht0-89-mTN"/>
+                            <constraint firstItem="rox-aO-T1H" firstAttribute="leading" secondItem="alQ-b1-nYg" secondAttribute="leading" id="W37-tZ-HEa"/>
+                            <constraint firstItem="rNC-zm-14t" firstAttribute="trailing" secondItem="dgF-2k-RQp" secondAttribute="trailing" id="dvD-6k-5DT"/>
+                            <constraint firstItem="5KM-aw-uRL" firstAttribute="leading" secondItem="rNC-zm-14t" secondAttribute="leading" id="seo-EE-rU4"/>
+                            <constraint firstItem="dgF-2k-RQp" firstAttribute="top" secondItem="alQ-b1-nYg" secondAttribute="top" id="sjk-B5-zjL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rNC-zm-14t"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Moves" image="cdactivo" id="lJS-CD-hJm"/>
+                    <navigationItem key="navigationItem" id="Wx4-hd-Nhu"/>
+                    <connections>
+                        <outlet property="searchBar" destination="rox-aO-T1H" id="7m9-bX-G0a"/>
+                        <outlet property="tblViewMoves" destination="5KM-aw-uRL" id="Bhr-Nb-gF9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52p-mp-BOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265.21739130434787" y="507.58928571428567"/>
+        </scene>
+        <!--Items-->
+        <scene sceneID="tU1-yC-lRp">
+            <objects>
+                <viewController id="zu7-Tf-ntq" customClass="ItemsViewController" customModule="PokeDeskValid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F3N-hh-TCX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCn-e2-E3i">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Zu-FV-NHO">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QwX-ZA-TIH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="noZ-jg-4sU">
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QwX-ZA-TIH" firstAttribute="top" secondItem="Msn-Ok-kT0" secondAttribute="top" id="2ia-GF-gva"/>
+                            <constraint firstItem="QwX-ZA-TIH" firstAttribute="leading" secondItem="F3N-hh-TCX" secondAttribute="leading" id="FA4-Dm-aTd"/>
+                            <constraint firstItem="Msn-Ok-kT0" firstAttribute="trailing" secondItem="QwX-ZA-TIH" secondAttribute="trailing" id="Ikt-QB-eLk"/>
+                            <constraint firstItem="Msn-Ok-kT0" firstAttribute="bottom" secondItem="noZ-jg-4sU" secondAttribute="bottom" id="YEO-vD-SFh"/>
+                            <constraint firstItem="noZ-jg-4sU" firstAttribute="leading" secondItem="F3N-hh-TCX" secondAttribute="leading" id="a8r-dC-V5u"/>
+                            <constraint firstItem="noZ-jg-4sU" firstAttribute="top" secondItem="QwX-ZA-TIH" secondAttribute="bottom" id="aZR-ad-LqK"/>
+                            <constraint firstItem="Msn-Ok-kT0" firstAttribute="trailing" secondItem="noZ-jg-4sU" secondAttribute="trailing" id="ebG-tX-0he"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Msn-Ok-kT0"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Items" image="dulceactivo" id="fIW-OL-CIv"/>
+                    <connections>
+                        <outlet property="searchBar" destination="QwX-ZA-TIH" id="RZV-F1-cCs"/>
+                        <outlet property="tblViewItems" destination="noZ-jg-4sU" id="Ve8-Pv-AWS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ry4-Yh-ta3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="424.63768115942031" y="507.58928571428567"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cdactivo" width="26" height="26"/>
+        <image name="dulceactivo" width="28" height="28"/>
         <image name="pikachu" width="28" height="29"/>
     </resources>
 </document>
