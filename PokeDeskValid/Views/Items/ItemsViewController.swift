@@ -126,7 +126,7 @@ extension ItemsViewController : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             showFilteredList = true
-            itemListShow = items?.filter {($0.name?.contains(searchText.lowercased())) as! Bool }
+            itemListShow = items?.filter {($0.name?.contains(searchText.lowercased())) ?? false }
         }else{
             showFilteredList = false
             itemListShow = items

@@ -31,7 +31,7 @@ class PokemonService {
             if let value = response.value {
                 pokemonListRes = value
             } else {
-                print("error getPokemons -> \(response.error)")
+                print("error getPokemons -> \(response.error.debugDescription)")
             }
             responseValue(pokemonListRes)
         }
@@ -47,7 +47,7 @@ class PokemonService {
               if let value = response.value {
                   pokemonRes = value
               } else {
-                  print("error getPokemon -> \(response.error)")
+                print("error getPokemon -> \(response.error.debugDescription)")
               }
               responseValue(pokemonRes)
           }
@@ -64,7 +64,7 @@ class PokemonService {
                if let value = response.value {
                    pokemonRes = value
                } else {
-                   print("error getPokemonEvolutions -> \(response.error)")
+                print("error getPokemonEvolutions -> \(response.error.debugDescription)")
                }
                responseValue(pokemonRes)
            }

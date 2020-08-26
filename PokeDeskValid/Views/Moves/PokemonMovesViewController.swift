@@ -126,7 +126,7 @@ extension PokemonMovesViewController : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
             showFilteredList = true
-            movesListShow = moves?.filter {($0.name?.contains(searchText.lowercased())) as! Bool }
+            movesListShow = moves?.filter {($0.name?.contains(searchText.lowercased())) ?? false }
         }else{
             showFilteredList = false
             movesListShow = moves

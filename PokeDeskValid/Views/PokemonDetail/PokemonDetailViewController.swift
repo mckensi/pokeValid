@@ -104,7 +104,6 @@ class PokemonDetailViewController: UIViewController {
     
     private func setUpUI(){
         
-       
         setUpPokemonDataUI()
         setUpTable()
         initListener()
@@ -116,14 +115,6 @@ class PokemonDetailViewController: UIViewController {
         }
         
         viewModel.getPokemonEvolutions(id: self.idPokemon ?? 1)
-        
-        lblTitleCollapsed.text = titleForLabels?.capitalizingFirstLetter()
-        lblTitleWithImage.text = titleForLabels?.capitalizingFirstLetter()
-        
-        containerViewTypePokemon.layer.cornerRadius = 10
-        containerViewButtonStats.layer.cornerRadius = 14
-        containerViewButtonsEvolutions.layer.cornerRadius = 14
-        containerViewButtonMoves.layer.cornerRadius = 14
     }
     
     private func setUpPokemonDataUI(){
@@ -158,6 +149,14 @@ class PokemonDetailViewController: UIViewController {
                }else{
                    self.containerViewTypePokemon.isHidden = true
                }
+        
+        lblTitleCollapsed.text = titleForLabels?.capitalizingFirstLetter()
+        lblTitleWithImage.text = titleForLabels?.capitalizingFirstLetter()
+        
+        containerViewTypePokemon.layer.cornerRadius = 10
+        containerViewButtonStats.layer.cornerRadius = 14
+        containerViewButtonsEvolutions.layer.cornerRadius = 14
+        containerViewButtonMoves.layer.cornerRadius = 14
     }
     
     private func setUpTable(){
@@ -177,8 +176,6 @@ class PokemonDetailViewController: UIViewController {
         
         let nibCellWeaknesses = UINib(nibName: "PokemonWeaknessesTableViewCell", bundle: nil)
         tableView.register(nibCellWeaknesses.self, forCellReuseIdentifier: "weaknessesCell")
-        
-        
     }
     
     private func setHeaderGradient(type: String){
@@ -186,14 +183,14 @@ class PokemonDetailViewController: UIViewController {
         gradientLayer.frame = self.viewHeaderContainer.bounds
         let colors = getColorTypePokemon(type: type)
         self.colors = colors
-        gradientLayer.colors = [colors.first, colors.last]
+        gradientLayer.colors = [colors.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor, colors.last ??  #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.viewHeaderContainer.layer.insertSublayer(gradientLayer, at: 0)
         
         let gradientLayerBackTitle = CAGradientLayer()
         gradientLayerBackTitle.frame = self.containerTitleView.bounds
-        gradientLayerBackTitle.colors = [colors.first, colors.last]
+        gradientLayerBackTitle.colors = [colors.first ?? #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor, colors.last ??  #colorLiteral(red: 0.3330000043, green: 0.6200000048, blue: 0.875, alpha: 1).cgColor]
         gradientLayerBackTitle.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayerBackTitle.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.containerTitleView.layer.insertSublayer(gradientLayerBackTitle, at: 0)

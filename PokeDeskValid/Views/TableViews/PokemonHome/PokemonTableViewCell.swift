@@ -21,10 +21,10 @@ class PokemonTableViewCell: UITableViewCell {
             let idPokemon = charactersUrl?.last ?? ""
             DispatchQueue.main.async {
                 if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon).png") {
-                    self.imageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cacheType, URL) in
-                        if error == nil{
+            
+                    
+                    self.imageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (result) in
                             self.setNeedsLayout()
-                        }
                     })
                 }
             }
