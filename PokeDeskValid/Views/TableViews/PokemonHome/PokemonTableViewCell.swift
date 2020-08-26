@@ -20,27 +20,18 @@ class PokemonTableViewCell: UITableViewCell {
             let charactersUrl = pokemon?.url?.split(separator: "/")
             let idPokemon = charactersUrl?.last ?? ""
             DispatchQueue.main.async {
-                if let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(idPokemon).png") {
-            
-                    
+                if let url = URL(string: "\(PokemonImageApi.baseImageUrl)\(idPokemon).png") {
                     self.imageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (result) in
                             self.setNeedsLayout()
                     })
                 }
             }
-           
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
