@@ -11,17 +11,18 @@ class PokemonMovesViewModel {
     var manager = PokemonManager.get
     var pokemonMovesListRes: ((MovesListRes) -> Void)?
     var moveRes: ((MoveRes) -> Void)?
+    var onFailure: (() -> Void)?
     
     func getListMoves(limit: Int, offset: Int, urlNextPage: String?){
         if let responseValue = pokemonMovesListRes {
-            manager.getListMoves(limit: limit, offset: offset, urlNextPage: urlNextPage, responseValue: responseValue)
+            manager.getListMoves(limit: limit, offset: offset, urlNextPage: urlNextPage, responseValue: responseValue, onFailure: onFailure)
         }
     }
     
     func getMoveById(id: Int){
-           if let responseValue = moveRes {
-               manager.getMoveById(id: id, responseValue: responseValue)
-           }
-       }
+        if let responseValue = moveRes {
+            manager.getMoveById(id: id, responseValue: responseValue, onFailure: onFailure)
+        }
+    }
 }
 

@@ -14,7 +14,7 @@ class PokemonDetailViewModel{
     
     
     var pokemonEvolutionsRes: ((PokemonEvolutionsRes) -> Void)?
-    
+    var onFailure: (() -> Void)?
 //    func getPokemon(id: Int){
 //        if let responseValue = pokemonRes {
 //            pokemonManager.getPokemon(id: id, responseValue: responseValue)
@@ -23,7 +23,7 @@ class PokemonDetailViewModel{
 //    
     func getPokemonEvolutions(id: Int){
         if let responseValue = pokemonEvolutionsRes {
-            pokemonManager.getPokemonEvolutions(id: id, responseValue: responseValue)
+            pokemonManager.getPokemonEvolutions(id: id, responseValue: responseValue, onFailure: onFailure)
         }
     }
 }

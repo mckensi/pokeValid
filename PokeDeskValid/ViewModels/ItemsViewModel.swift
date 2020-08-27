@@ -10,10 +10,11 @@ class ItemsViewModel {
     
     var manager = PokemonManager.get
     var itemsListRes: ((ListItemsRes) -> Void)?
+    var onFailure: (() -> Void)?
      
     func getListMoves(limit: Int, offset: Int, urlNextPage: String?){
         if let responseValue = itemsListRes {
-            manager.getListItems(limit: limit, offset: offset, urlNextPage: urlNextPage, responseValue: responseValue)
+            manager.getListItems(limit: limit, offset: offset, urlNextPage: urlNextPage, responseValue: responseValue, onFailure: onFailure)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import NotificationBannerSwift
 
 class ItemsViewController: UIViewController {
     
@@ -89,6 +90,12 @@ class ItemsViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.tblViewItems.reloadData()
             }
+        }
+        
+        viewModel.onFailure = {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ocurrio un problema con tu busqueda, trabajamos para resolverlo.", style: .danger)
+              banner.backgroundColor = .systemRed
+              banner.show()
         }
     }
     

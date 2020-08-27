@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import NotificationBannerSwift
 
 enum SectionDetail {
     case STATS
@@ -225,6 +226,14 @@ class PokemonDetailViewController: UIViewController {
                 self?.evolutions.append(response.chain?.evolvesTo?[0].evolvesTo?[0].species ?? Species())
             }
         }
+        
+        viewModel.onFailure = {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ocurrio un problema con tu busqueda, trabajamos para resolverlo.", style: .danger)
+            banner.backgroundColor = .systemRed
+            banner.show()
+        }
+        
+        
     }
     
     //MARK: Actions

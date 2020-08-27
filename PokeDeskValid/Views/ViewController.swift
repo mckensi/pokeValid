@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import IQKeyboardManagerSwift
+import NotificationBannerSwift
 
 class ViewController: UIViewController {
     
@@ -114,8 +115,12 @@ class ViewController: UIViewController {
             vc.pokemon = response
             self.present(vc, animated: true, completion: nil)
             
-            
-            
+        }
+        
+        viewModel.onFailure = {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ocurrio un problema con tu busqueda, trabajamos para resolverlo.", style: .danger)
+            banner.backgroundColor = .systemRed
+            banner.show()
         }
     }
     

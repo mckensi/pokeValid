@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import NotificationBannerSwift
 
 class PokemonMovesViewController: UIViewController {
     
@@ -61,7 +62,7 @@ class PokemonMovesViewController: UIViewController {
             }
             
             self?.movesListShow = self?.moves
-       
+            
             self?.urlNextPage = response.next
             DispatchQueue.main.async {
                 self?.tblViewMoves.reloadData()
@@ -73,6 +74,12 @@ class PokemonMovesViewController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             vc.move = response
             self?.present(vc, animated: true, completion: nil)
+        }
+        
+        viewModel.onFailure = {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ocurrio un problema con tu busqueda, trabajamos para resolverlo.", style: .danger)
+            banner.backgroundColor = .systemRed
+            banner.show()
         }
     }
     
@@ -97,7 +104,7 @@ class PokemonMovesViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
-
+    
 }
 
 extension PokemonMovesViewController : UITableViewDelegate {
@@ -121,11 +128,11 @@ extension PokemonMovesViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-           if indexPath.row == ((self.movesListShow?.count ?? 0) - 2) {
-               currentPage = currentPage + 1
-               viewModel.getListMoves(limit: 20, offset: 0, urlNextPage: urlNextPage)
-           }
-       }
+        if indexPath.row == ((self.movesListShow?.count ?? 0) - 2) {
+            currentPage = currentPage + 1
+            viewModel.getListMoves(limit: 20, offset: 0, urlNextPage: urlNextPage)
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let moveSelected = movesListShow?[indexPath.row]
