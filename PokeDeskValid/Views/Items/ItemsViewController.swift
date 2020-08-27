@@ -127,6 +127,13 @@ extension ItemsViewController : UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let banner = NotificationBanner(title: "Hola!", subtitle: "Estamos trabajando para mostrarte mas detalles", style: .warning)
+        banner.backgroundColor = .systemBlue
+        banner.show()
+
+    }
+    
 }
 
 extension ItemsViewController : UISearchBarDelegate{
